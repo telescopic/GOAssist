@@ -84,6 +84,8 @@ public class DisplayPicture extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //Miscellaneous crap
+
         //set initial button state
         button_state=0;
 

@@ -75,13 +75,14 @@
         </ImageView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@drawable/rounded_corner"
-        android:gravity="top|left"
-        android:text="The Awesome Sliding Up Panel"
-        android:textSize="16sp" />
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/rounded_corner"
+            android:gravity="top|left"
+            android:text="The Awesome Sliding Up Panel"
+            android:textSize="16sp" />
+
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
