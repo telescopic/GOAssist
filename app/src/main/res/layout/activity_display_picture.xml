@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:gravity="bottom"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DisplayPicture">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="121dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="145dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/logo_icon" />
+
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/close_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginLeft="55dp"
+            android:background="@drawable/flash_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="375dp"
+            android:background="@drawable/settings_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/cImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:srcCompat="@tools:sample/avatars"
+            >
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/rounded_corner"
+        android:gravity="top|left"
+        android:text="The Awesome Sliding Up Panel"
+        android:textSize="16sp" />
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
