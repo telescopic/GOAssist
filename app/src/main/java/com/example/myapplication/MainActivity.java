@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     Animation anim1,anim2;
     LocationFinder locationFinder;
 
-    static ArrayList<ArrayList<String>>arr=new ArrayList<ArrayList<String>>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,19 +61,13 @@ public class MainActivity extends AppCompatActivity {
         //MODIFYING
 
         tempbtn=findViewById(R.id.imageButton5);
-        arr.add(new ArrayList<String>(Arrays.asList("Aguada","15.4926","73.7732","Built by  Julião Simão in 1612","5 m high","Fort Aguada is a well-preserved seventeenth-century Portuguese fort, along with a lighthouse, standing in Goa, India, on Sinquerim Beach, overlooking the Arabian Sea.")));
-        arr.add(new ArrayList<String>(Arrays.asList("Basilica of Bom Jesus","15.5009","73.9116","Built by  Julião Simão, Domingos Fernandes in 1605","18m high","The Basilica of Bom Jesus is a Roman Catholic basilica located in Goa, India, and is part of the Churches and convents of Goa UNESCO World Heritage Site. ")));
-        arr.add(new ArrayList<String>(Arrays.asList("Shantadurga Temple","15.3961","73.9856","constructed during the reign of Maratha Empire ruler Chattrapati Shahu Maharaj of Satara","HEIGHT","Shri Shantadurga Temple is a Private temple complex belonging to Goud Saraswat Brahmin community. The temple is dedicated to Shantadurga, the goddess who mediates between Vishnu and Shiva. ")));
 
         tempbtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Log.d("checking","enetered tempbtn");
-                Intent intent =new Intent(MainActivity.this,Maps.class);
-                intent.putExtra("lat","15.4926");
-                intent.putExtra("long","73.7732");
-                startActivity(intent);
+                //Log.d("checking","enetered tempbtn");
+
             }
         });
 

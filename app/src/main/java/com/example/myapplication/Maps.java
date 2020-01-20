@@ -82,13 +82,13 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         //LatLng sydney = new LatLng(-34, 151);
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        for(int i=0;i<MainActivity.arr.size();i++)
+        for(int i=0;i<DisplayPicture.arr.size();i++)
         {
 
-            l=new LatLng(Double.parseDouble(MainActivity.arr.get(i).get(1)),Double.parseDouble(MainActivity.arr.get(i).get(2)));
-            loc=new Location(MainActivity.arr.get(i).get(0));
+            l=new LatLng(Double.parseDouble(DisplayPicture.arr.get(i).get(1)),Double.parseDouble(DisplayPicture.arr.get(i).get(2)));
+            loc=new Location(DisplayPicture.arr.get(i).get(0));
             dist=distance(l.latitude,l.longitude,l1.latitude,l1.longitude);
-            if(dist<0.3)
+            if(dist<0.1)
                 mMap.addMarker(new MarkerOptions().position(l).title(loc.getProvider()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             else if(dist<10)
                 mMap.addMarker(new MarkerOptions().position(l).title(loc.getProvider()));
