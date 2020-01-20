@@ -32,4 +32,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-ml-vision:16.0.0'
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
     implementation 'com.google.firebase:firebase-ml-vision-image-label-model:15.0.0'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
 }

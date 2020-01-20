@@ -102,7 +102,6 @@ public class DisplayPicture extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //Miscellaneous crap
-
         //set initial button state
         button_state=0;
 
@@ -145,6 +144,9 @@ public class DisplayPicture extends AppCompatActivity {
 
         //// DEBUGGING PORTION
         onLandmarkDetected();
+
+
+        updateDescription("LANDMARK DETECTED: ");
     }
 
     public void initPoints(){
@@ -291,7 +293,7 @@ public class DisplayPicture extends AppCompatActivity {
                         // Task completed successfully
                         // [START_EXCLUDE]
                         // [START get_landmarks_cloud]
-                        Toast.makeText(getApplicationContext(),"entered suc",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"entered suc",Toast.LENGTH_LONG).show();
 
                         for (FirebaseVisionCloudLandmark landmark: firebaseVisionCloudLandmarks) {
 
@@ -299,7 +301,8 @@ public class DisplayPicture extends AppCompatActivity {
                             String landmarkName = landmark.getLandmark();
                             String entityId = landmark.getEntityId();
                             float confidence = landmark.getConfidence();
-                            Toast.makeText(getApplicationContext(),landmarkName,Toast.LENGTH_LONG).show();
+                            updateDescription("LANDMARK DETECTED: "+ landmarkName);
+                            //Toast.makeText(getApplicationContext(),landmarkName,Toast.LENGTH_LONG).show();
                             //Log.d("checking","landmark"+landmarkName);
                         }
                         // [END get_landmarks_cloud]
