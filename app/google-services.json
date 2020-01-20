@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "490578150957",
+    "firebase_url": "https://tourassist.firebaseio.com",
+    "project_id": "tourassist",
+    "storage_bucket": "tourassist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490578150957:android:35fc1c774157a2fcb8daa4",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490578150957-7qp6tnf2u8e02kue6eqmb7ai3d0h62b3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgBQ2TUEW4WMuMLytyMeXJOfZDqXkp0wg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490578150957-7qp6tnf2u8e02kue6eqmb7ai3d0h62b3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

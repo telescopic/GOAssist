@@ -66,7 +66,9 @@ public class ShowCamera extends SurfaceView implements SurfaceHolder.Callback {
             camera.setDisplayOrientation(0);
             params.setRotation(0);
         }
+        params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         params.setPictureSize(mSize.width,mSize.height);
+
         camera.setParameters(params);
         try {
             camera.setPreviewDisplay(holder);

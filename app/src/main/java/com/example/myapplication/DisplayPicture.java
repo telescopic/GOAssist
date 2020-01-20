@@ -1,7 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.graphics.Rect;
+import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,7 +28,23 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.google.firebase.ml.vision.common.FirebaseVisionLatLng;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.cloud.FirebaseVisionCloudDetectorOptions;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+import com.google.firebase.ml.vision.cloud.landmark.FirebaseVisionCloudLandmarkDetector;
+
+import com.google.firebase.ml.vision.cloud.landmark.FirebaseVisionCloudLandmark;
+import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata;
+
+import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -143,6 +160,7 @@ public class DisplayPicture extends AppCompatActivity {
     }
 
     public void addInfoButton(){
+        foo();
 //        cv=new CustomView(this); cv.paint.setColor(Color.GREEN);
 //        RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(500,500);
 //        cv.setLayoutParams(params);
@@ -228,6 +246,14 @@ public class DisplayPicture extends AppCompatActivity {
                 }
             }
         });
+        landmarkDetected.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(button_state==1) return false;
+                updateDescription("Long Clicked");
+                return true;
+            }
+        });
         relativeLayout.addView(landmarkDetected);
     }
 
@@ -238,6 +264,7 @@ public class DisplayPicture extends AppCompatActivity {
         try {
             File f=new File(path, "profile.jpg");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            picture = b;
             imageView.setImageBitmap(b);
         }
         catch (FileNotFoundException e)
@@ -246,4 +273,51 @@ public class DisplayPicture extends AppCompatActivity {
         }
 
     }
+
+    public void foo(){
+       // Toast.makeText(getApplicationContext(),"Hi",Toast.LENGTH_LONG).show();
+        FirebaseVisionCloudDetectorOptions options =
+                new FirebaseVisionCloudDetectorOptions.Builder()
+                        .setModelType(FirebaseVisionCloudDetectorOptions.LATEST_MODEL)
+                        .setMaxResults(15)
+                        .build();
+        FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(picture);
+        FirebaseVisionCloudLandmarkDetector detector = FirebaseVision.getInstance()
+                .getVisionCloudLandmarkDetector();
+        Task<List<FirebaseVisionCloudLandmark>> result = detector.detectInImage(image)
+                .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionCloudLandmark>>() {
+                    @Override
+                    public void onSuccess(List<FirebaseVisionCloudLandmark> firebaseVisionCloudLandmarks) {
+                        // Task completed successfully
+                        // [START_EXCLUDE]
+                        // [START get_landmarks_cloud]
+                        Toast.makeText(getApplicationContext(),"entered suc",Toast.LENGTH_LONG).show();
+
+                        for (FirebaseVisionCloudLandmark landmark: firebaseVisionCloudLandmarks) {
+
+                            Rect bounds = landmark.getBoundingBox();
+                            String landmarkName = landmark.getLandmark();
+                            String entityId = landmark.getEntityId();
+                            float confidence = landmark.getConfidence();
+                            Toast.makeText(getApplicationContext(),landmarkName,Toast.LENGTH_LONG).show();
+                            //Log.d("checking","landmark"+landmarkName);
+                        }
+                        // [END get_landmarks_cloud]
+                        // [END_EXCLUDE]
+                    }
+                })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Task failed with an exception
+                        // ...
+
+                        Toast.makeText(getApplicationContext(),"FAIL",Toast.LENGTH_LONG).show();
+
+                    }
+                });
+
+    }
+
 }
